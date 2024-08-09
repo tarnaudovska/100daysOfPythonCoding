@@ -15,18 +15,17 @@ levels = {
     "hard":5
 }
 
-number_picked = random.randint(0, 5)
-
 def number_of_attempts(level):
     return levels[level]
   
-start_game = input("Do you want to play new game? y or n\n")
+start_game = input("Do you want to play new game? y or n\n").lower()
+number_picked = random.randint(0, 25)
 
 while start_game == "y":
     print(logo)
-    choose_level = input("Choose level, easy, normal or hard\n")   
+    choose_level = input("Choose level, easy, normal or hard\n").lower() 
     attempts = number_of_attempts(choose_level)
-    print(attempts)
+    print(f"You have {attempts} attempts to guess the number")
 
     won = False
     
@@ -40,10 +39,10 @@ while start_game == "y":
             print(f"You are low. Left attempts {attempts}")
         else:
             won = True
-            print("You win")
+            print("YOU WIN!!!")
             break
 
     if not won:
-        print("you used all your attempts. Game over")
+        print(f"You used all your attempts. The number was {number_picked}.\nGAME OVER")
 
-    start_game = input("Do you want to play new game? y or n")   
+    start_game = input("Do you want to play new game? y or n\n").lower()
