@@ -11,7 +11,6 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 #Eazy Level - Order not randomised:
 #e.g. 4 letter, 2 symbol, 2 number = JduE&!91
-import random
 random_letter = random.sample(letters, nr_letters)
 random_symbol = random.sample(symbols, nr_symbols)
 random_numbers = random.sample(numbers, nr_numbers)
