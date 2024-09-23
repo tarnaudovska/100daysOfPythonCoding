@@ -1,7 +1,9 @@
 import requests
 
+#API inputs needed amount=50 category=9 difficulty=medium type=boolean
 parameters = {
-    "amount": 10,
+    "amount": 50,
+    "difficulty" : "hard",
     "type": "boolean",
 }
 
