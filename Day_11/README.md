@@ -1,34 +1,32 @@
-## 🎲🃏 Blackjack game with Functions (with outputs) and Dictionaries
+# Number Guessing Game 🎯
 
-Welcome to the **Blackjack Game**! This program is written in Python and uses **functions**, **dictionaries**, and interactive **inputs/outputs** to simulate the popular casino game of Blackjack.
+Welcome to the **Number Guessing Game**! Test your luck and logic by trying to guess a randomly chosen number within a limited number of attempts. Choose your difficulty level and see if you can outsmart the game!
 
 ## 🛠 Features
-- Player vs. Dealer gameplay.
-- Deck of cards implemented using **dictionaries**.
-- Real-time scoring to determine winner.
+- Three difficulty levels: **Easy**, **Normal**, and **Hard**.
+- Randomly generated number between 0 and 25 for each game session.
+- Feedback for every guess (e.g., "Too High" or "Too Low").
+- Dynamic attempts based on the chosen difficulty.
 
-## 🧩 How It Works
-1. **Start the Game**: The player and dealer are dealt two cards each.
-2. **Gameplay**:
-   - Player can `Hit` to draw another card or `Stand` to hold.
-   - Dealer follows predefined rules (e.g., must hit if score < 17).
-3. **Determine Winner**: The program calculates scores and declares a winner.
+## 🔧 How to Play
+1. **Start the Game**: Run the script and input `y` to begin.
+2. **Choose Difficulty**:
+   - **Easy**: 15 attempts
+   - **Normal**: 10 attempts
+   - **Hard**: 5 attempts
+3. **Guess the Number**: Input your guess (between 0 and 25). The game will guide you by telling you if your guess is too high or too low.
+4. **Win or Lose**:
+   - Win by guessing the correct number before running out of attempts.
+   - Lose when all attempts are used up.
 
-## 🔑 Key Code Features
-- **Functions**: 
-  - `add_cards()`: Draws a card randomly from the deck.
-  - `user_score()`: shows the score of the player or the dealer.
-- **Dictionaries**: The player and the dealer have both nested dictionaries with the delt cards and the scores.
-<pre>
-game = {
-    "player":{
-      "cards":[],
-      "score":0,
-    },
-    "computer":{
-      "cards":[],
-      "score":0,
-    }
-  }
-</pre>
+## 📜 Code Highlights
+- **Random Number Generation**: `random.randint(0, 25)` is used to generate the target number.
+- **Difficulty Levels**: A dictionary (`levels`) maps difficulty levels to the number of attempts.
+- **Feedback Loop**: Nested loops manage attempts and feedback for user guesses.
+
+
+## 🚀 Run the Game
+1. Clone this repository: Day_11
+
+Enjoy the game, and good luck guessing! 🤞
 
