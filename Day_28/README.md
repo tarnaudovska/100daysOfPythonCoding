@@ -3,6 +3,8 @@
 ## Overview
 
 This is a **Pomodoro Timer** built using Python's `tkinter` library. It is designed to implement the Pomodoro Technique, a time management method that alternates work sessions with short and long breaks to improve productivity.
+## App Preview
+<img src="./pomodoro_app_preview.jpg" alt="Description" width="200">
 
 ## Features
 
