@@ -1,0 +1,21 @@
+color_options = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple",
+    "orange",
+    "pink",
+    "cyan",
+    "magenta",
+    "brown",
+    "black",
+    "gray",
+    "gold",
+    "navy",
+    "teal",
+    "violet",
+    "turquoise",
+    "indigo",
+    "maroon"
+]
