@@ -1,6 +1,6 @@
 import pandas
 
-data = pandas.read_csv("./day_25_CSVs/squirrel/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+data = pandas.read_csv("./day_25_CSVs/squirrel/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv") #put your location of the file
 gray_squirrels = len(data[data["Primary Fur Color"] == "Gray"])
 cinnamon_squirrels = len(data[data["Primary Fur Color"] == "Cinnamon"])
 black_squirrels = len(data[data["Primary Fur Color"] == "Black"])

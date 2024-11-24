@@ -3,13 +3,13 @@ import pandas
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
-image = "blank_states_img.gif"
+image = "E:/PROGRAMING/PYTHON/100daysOfPythonCoding/day_25_CSVs/us_states/blank_states_img.gif" #put the path to the map image
 screen.addshape(image)
 turtle.shape(image)
 
 t=turtle.Turtle()
 
-data = pandas.read_csv("50_states.csv")
+data = pandas.read_csv("E:/PROGRAMING/PYTHON/100daysOfPythonCoding/day_25_CSVs/us_states/50_states.csv") #put the path tp the csv file
 states_list = data.state.to_list()
 guessed_states = []
 
