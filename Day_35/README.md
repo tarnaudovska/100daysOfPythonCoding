@@ -2,8 +2,10 @@
 
 This project is a simple **Quiz Application** built in Python. The application uses Object-Oriented Programming (OOP) principles to manage the questions and quiz logic. A graphical user interface (GUI) is implemented for an interactive user experience.
 
----
-<img src="preview/preview.jpg" alt="Quiz Interface" width="200px">
+## Preview
+<div align="center">
+   <img src="preview/preview.jpg" alt="Quiz Interface" width="250px">
+</div>
 
 ## Features
 - Loads questions and answers from a data file.
