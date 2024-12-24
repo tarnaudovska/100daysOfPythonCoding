@@ -2,8 +2,10 @@
 
 ## Overview
 The **U.S. States Game** is an interactive Python project where users test their knowledge of U.S. states by identifying them on a map. The game uses the `turtle` module for displaying the map and `pandas` for handling state data.
-
 ---
+## Preview
+<img src="preview/preview.jpg" alt="Quiz Interface" width="300px">
+
 
 ## How It Works
 1. The program displays a blank map of the United States.
