@@ -42,7 +42,7 @@ class UserLogInForm(FlaskForm):
     
 class UserRegister(FlaskForm):
     email = EmailField("Email",  validators=[InputRequired("Please enter your email address.")])
-    password = StringField("Password", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
     name = StringField("Name", validators=[DataRequired()])
     submit = SubmitField('Sign me up')
 
@@ -58,7 +58,7 @@ def register():
         new_user = User(
             name = form.name.data,
             email = form.email.data,
-            password = form.password.data
+            password = generate_password_hash(form.password.data, salt_length=8)
         )
 
         db.session.add(new_user)
@@ -76,7 +76,7 @@ def login():
         password = form.password.data
 
         user = User.query.filter_by(email=email).first()
-        if user and password==user.password:
+        if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
             flash("Login successful", "success")
             return redirect(url_for('secrets'))
@@ -101,7 +101,8 @@ def secrets():
 
 @app.route('/logout')
 def logout():
-    pass
+    session.clear()
+    return redirect(url_for('home'))
 
 @app.route('/success')
 def success():
