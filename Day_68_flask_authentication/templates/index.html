@@ -13,4 +13,8 @@
   >
 </div>
 
+{% if current_user %}
+  Hi {{ current_user.email }}!
+{% endif %}
+
 {% endblock %}
