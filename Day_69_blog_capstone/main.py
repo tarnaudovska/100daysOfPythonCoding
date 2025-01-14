@@ -12,9 +12,8 @@ from sqlalchemy.orm import relationship, DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
-# Import your forms from the forms.py
-from forms import CreatePostForm
-
+from forms import RegisterForm, LoginForm, CommentForm, CreatePostForm
+from flask_ckeditor import CKEditor, CKEditorField
 
 '''
 Make sure the required packages are installed: 
@@ -35,8 +34,6 @@ app.config['CKEDITOR_PKG_TYPE'] = 'basic'
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
-# TODO: Configure Flask-Login
-
 
 # CREATE DATABASE
 class Base(DeclarativeBase):
@@ -49,7 +46,14 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# CONFIGURE TABLES
+ckeditor = CKEditor()
+
+def create_app():
+    app = Flask(__name__)
+    ckeditor.init_app(app)
+    return app
+
+# Blog table
 class BlogPost(db.Model):
     __tablename__ = "blog_posts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -60,10 +64,10 @@ class BlogPost(db.Model):
     subtitle: Mapped[str] = mapped_column(String(250), nullable=True)
     date: Mapped[str] = mapped_column(String(250), nullable=True)
     body: Mapped[str] = mapped_column(Text, nullable=False)
-    # author: Mapped[str] = mapped_column(String(250), nullable=True)
     img_url: Mapped[str] = mapped_column(String(250), nullable=False)
+    submit = SubmitField("Submit Post")
 
-# User table for all registered users. 
+# User table
 class User(UserMixin, db.Model):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -71,19 +75,6 @@ class User(UserMixin, db.Model):
     password: Mapped[str] = mapped_column(String(100))
     name: Mapped[str] = mapped_column(String(100))
     posts = relationship("BlogPost", back_populates="author")
-
-# Comment table for all registered users. 
-
-class RegisterForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
-    email = EmailField("Email", validators=[InputRequired("Please enter your email address")])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField('Sign me up')
-
-class LoginForm(FlaskForm):
-    email = EmailField("Email",  validators=[InputRequired("Please enter your email address.")])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField('Let me in')
 
 with app.app_context():
     db.create_all()
@@ -160,7 +151,8 @@ def get_all_posts():
 @app.route("/post/<int:post_id>")
 def show_post(post_id):
     post = db.session.get(BlogPost, post_id)
-    return render_template("post.html", post=post)
+    comment_form = CommentForm()
+    return render_template("post.html", post=post, current_user=current_user, form=comment_form)
 
 
 # TODO: Use a decorator so only an admin user can create a new post

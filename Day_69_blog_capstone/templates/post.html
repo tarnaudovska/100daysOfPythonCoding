@@ -35,8 +35,10 @@
         </div>
 
         <!-- Comments Area -->
-        <!-- TODO: Add a CKEditor for commenting below -->
-        <div class="comment">
+        <!-- CKEditor  -->
+         {{ ckeditor.load() }}
+         {{ ckeditor.config(name="comment_text") }}
+        <div class="col-lg-8 col-md-10 mx-auto class="comment">
           <!-- TODO: Show all the comments on a post -->
           <ul class="commentList">
             <li>
