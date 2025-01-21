@@ -2,6 +2,10 @@
 
 This is a Flask-based blogging platform that allows users to register, log in, create, view, comment on, and manage blog posts. The application incorporates user authentication, an admin-only mode for sensitive operations, and relationships between blog posts, users, and comments.
 
+<p style="text-align: center;">
+  <img src="./preview/preview.jpg" alt="Description" width="1000">
+</p>
+
 ## Features
 
 ### User Authentication
