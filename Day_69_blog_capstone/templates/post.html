@@ -26,7 +26,6 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         {{ post.body|safe }}
-        <!--TODO: Only show Edit Post button if user id is 1 (admin user) -->
         {% if current_user.id == 1 or current_user.id == post.author_id %}
         <div class="d-flex justify-content-end mb-4">
           <a
@@ -42,8 +41,7 @@
         {{ ckeditor.load() }} 
         {{ ckeditor.config(name="comment_text") }}
         {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
-       
-          <!-- TODO: Show all the comments on a post -->
+
            <div class="comment">
           <ul class="commentList">
             {% for comment in post.comments %}
