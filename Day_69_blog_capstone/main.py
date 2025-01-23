@@ -11,11 +11,10 @@ from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import RegisterForm, LoginForm, CommentForm, CreatePostForm
 from flask_ckeditor import CKEditor
-import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config['CKEDITOR_PKG_TYPE'] = 'basic'
 ckeditor = CKEditor(app)
 Bootstrap5(app)
