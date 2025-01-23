@@ -2,11 +2,12 @@ from flask import Flask, render_template, redirect, url_for, request, abort
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Integer, String, Float
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, NumberRange
+from wtforms.validators import DataRequired
 import requests
+import os
 
 MOVIE_DB_API_KEY = "PUT YOUR API KEY HERE"
 MOVIE_DB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
@@ -15,7 +16,7 @@ MOVIE_DB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 Bootstrap5(app)
 db = SQLAlchemy(app)
 
